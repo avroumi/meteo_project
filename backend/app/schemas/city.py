@@ -1,6 +1,6 @@
 from .base import ClimaBaseModel
 
-class CitySearchResult(CLimaBaseModel):
+class CitySearchResult(ClimaBaseModel):
     id: int
     name: str
     country: str
