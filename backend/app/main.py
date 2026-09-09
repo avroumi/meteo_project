@@ -6,9 +6,13 @@ from .exceptions.external_service import ExternalServiceError
 from .routers.health import router as router_health
 from .routers.cities import router as router_cities
 from .routers.weather import router as router_weather
+from .routers.favorites import router as router_favorites
+from .routers.utils import router as router_utils
 
 
 from .middleware.request_logger import middleware_info
+
+from app.database.mongo import ping_mongo
 
 app = FastAPI()
 
@@ -32,6 +36,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.on_event("startup")
+async def startup_event():
+    await ping_mongo()
+    print("MongoDB connected")
+
+
 app.include_router(router_health)
 app.include_router(router_cities)
 app.include_router(router_weather)
+app.include_router(router_favorites)
+app.include_router(router_utils)
