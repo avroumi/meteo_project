@@ -4,7 +4,7 @@ from bson import ObjectId
 
 
 async def create_favorite(favorite: FavoriteCreate) -> FavoriteResponse:
-    document = favorite.model_dump()
+    document = favorite.model_dump(by_alias=False)
     result = await favorites_collection.insert_one(document)
     inserted_id = result.inserted_id
     return {**document, "id": str(inserted_id)}

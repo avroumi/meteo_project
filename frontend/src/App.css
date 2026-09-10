@@ -1,0 +1,49 @@
+.weather-condition {
+  --weather-bg: #eef2f7;
+  --weather-text: #1f2937;
+
+  background: var(--weather-bg);
+  color: var(--weather-text);
+
+  padding: 18px;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.weather-condition:hover {
+  transform: translateY(-3px);
+}
+
+.weather-condition.sunny {
+  --weather-bg: linear-gradient(135deg, #ffe082, #ffb74d);
+  --weather-text: #5d4037;
+}
+
+.weather-condition.cloudy {
+  --weather-bg: linear-gradient(135deg, #cfd8dc, #90a4ae);
+}
+
+.weather-condition.rain {
+  --weather-bg: linear-gradient(135deg, #90caf9, #546e7a);
+  --weather-text: white;
+}
+
+.weather-condition.storm {
+  --weather-bg: linear-gradient(135deg, #455a64, #212121);
+  --weather-text: white;
+}
+
+.weather-condition.snow {
+  --weather-bg: linear-gradient(135deg, #ffffff, #b3e5fc);
+}
+
+.weather-condition.fog {
+  --weather-bg: linear-gradient(135deg, #eceff1, #b0bec5);
+}
